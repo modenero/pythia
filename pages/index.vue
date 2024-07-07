@@ -68,7 +68,7 @@ onMounted(() => {
                         <div class="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
                             <div class="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
                                 <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                                    A premium <span class="text-7xl text-amber-400 italic font-light">Builder Experience</span> ideal for Noob thru Full-stack
+                                    A FREE + Universal <span class="text-7xl text-amber-400 italic font-light">Crypto Oracles</span> Service &amp; Data Center
                                 </h1>
 
                                 <p class="relative mt-6 text-2xl leading-8 font-light text-gray-600 sm:max-w-md lg:max-w-none">
