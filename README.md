@@ -2,4 +2,4 @@
 
 ### https://pythia.app.runonflux.io/
 
-A universal Crypto Oracle services center.
+### A Universal (FOSS) Crypto Oracles Service & Data Center
