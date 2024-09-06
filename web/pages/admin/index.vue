@@ -1,6 +1,10 @@
 <script setup lang="ts">
+definePageMeta({
+    layout: 'admin',
+})
+
 useHead({
-    title: `Blank — Pythia`,
+    title: `Admin — Pythia`,
     meta: [
         { name: 'description', content: `Pythia offers blockchain insight.` }
     ],
@@ -22,9 +26,9 @@ const System = useSystemStore()
 </script>
 
 <template>
-    <main class="max-w-7xl mx-auto py-5">
+    <main class="max-w-7xl mx-auto py-5 gap-6">
         <h1 class="text-5xl font-medium">
-            Blank
+            Admin
         </h1>
 
         <p>

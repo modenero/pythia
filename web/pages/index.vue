@@ -1,4 +1,7 @@
 <script setup lang="ts">
+/* Import modules. */
+import moment from 'moment'
+
 useHead({
     title: 'Pythia — Blockchain Insight',
     meta: [
@@ -13,21 +16,75 @@ const System = useSystemStore()
 const oracles = ref()
 
 const dataOracles = computed(() => {
-    return oracles.value
+    if (!oracles.value || !oracles.value.data) {
+        return []
+    }
+
+    return oracles.value.data
 })
 
 const priceOracles = computed(() => {
-    return oracles.value
+    if (!oracles.value || !oracles.value.price) {
+        return []
+    }
+
+    return oracles.value.price
 })
 
 onMounted(() => {
-    oracles.value = []
+    oracles.value = {}
 
-    oracles.value.push({
+    oracles.value.price = []
+    oracles.value.data = []
+
+    oracles.value.price.push({
+        id: '51b3b9c8-cb5e-4554-a662-2d0424032971',
+        name: 'BTC / USD₮',
+        quote: '53,948.998880',
+        decimals: 6,
+        updatedAt: 1725657783,
+    })
+
+    oracles.value.price.push({
+        id: '783dd4a2-1484-4b61-8a14-8d2f4b471c25',
+        name: 'BCH / USD₮',
+        quote: '298.009988',
+        decimals: 6,
+        updatedAt: 1725657783,
+    })
+
+    oracles.value.price.push({
         id: '518cd288-0d58-44e0-8262-cbde23fa4dd0',
-        name: 'NEXA / USD₮',
-        quote: '0.000009988800',
-        decimals: 12,
+        name: 'mNEXA / USD₮',
+        quote: '2.088000',
+        decimals: 6,
+        updatedAt: 1725657783,
+    })
+
+
+
+    oracles.value.data.push({
+        id: '76915bfb-3bc7-4f51-9b29-8ad80fc4c33a',
+        name: 'AVAS / USD₮',
+        quote: '0.991337',
+        decimals: 6,
+        updatedAt: 1725660362,
+    })
+
+    oracles.value.data.push({
+        id: '643a8b3b-4c5a-408f-b778-02b13dfc91b0',
+        name: 'NXL / USD₮',
+        quote: '0.450099',
+        decimals: 6,
+        updatedAt: 1725660362,
+    })
+
+    oracles.value.data.push({
+        id: '390e2931-409a-4cfe-aeef-0e6989e1552f',
+        name: 'STUDIO / USD₮',
+        quote: '0.028000',
+        decimals: 6,
+        updatedAt: 1725660362,
     })
 })
 
@@ -213,6 +270,9 @@ onMounted(() => {
             <div class="w-full my-20 h-1 bg-gray-500" />
 
             <ul role="list" class="mx-auto mt-32 max-w-7xl px-6 lg:px-8 grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-3 xl:gap-x-8">
+                <h2 class="col-span-3 text-3xl font-bold tracking-widest">
+                    Featured Coin Pairs
+                </h2>
 
                 <li v-for="oracle of priceOracles" :key="oracle.id" class="overflow-hidden rounded-xl border border-gray-200">
                     <div class="flex items-center gap-x-4 border-b border-gray-900/5 bg-gray-50 p-6">
@@ -247,61 +307,30 @@ onMounted(() => {
                             </dd>
                         </div>
 
-                    </dl>
-                </li>
-
-                <li class="overflow-hidden rounded-xl border border-gray-200">
-                    <div class="flex items-center gap-x-4 border-b border-gray-900/5 bg-gray-50 p-6">
-                        <img src="https://tailwindui.com/img/logos/48x48/savvycal.svg" alt="SavvyCal" class="h-12 w-12 flex-none rounded-lg bg-white object-cover ring-1 ring-gray-900/10" />
-                        <div class="text-xl font-medium leading-6 text-gray-900">
-                            NEXA / BTC
-                        </div>
-                    </div>
-
-                    <dl class="-my-3 divide-y divide-gray-100 px-6 py-4 text-sm leading-6">
                         <div class="flex justify-between gap-x-4 py-3">
-                            <dt class="text-gray-500">Last invoice</dt>
-                            <dd class="text-gray-700"><time datetime="2023-01-22">January 22, 2023</time></dd>
-                        </div>
+                            <dt class="text-lg text-gray-500">
+                                Last Update
+                            </dt>
 
-                        <div class="flex justify-between gap-x-4 py-3">
-                            <dt class="text-gray-500">Amount</dt>
                             <dd class="flex items-start gap-x-2">
-                                <div class="font-medium text-gray-900">$14,000.00</div>
-                                <div class="rounded-md py-1 px-2 text-xs font-medium ring-1 ring-inset text-green-700 bg-green-50 ring-green-600/20">Paid</div>
+                                <div class="text-lg font-medium text-gray-900">
+                                    {{moment.unix(oracle.updatedAt).fromNow()}}
+                                </div>
+                                <!-- <div class="rounded-md py-1 px-2 text-xs font-medium ring-1 ring-inset text-red-700 bg-red-50 ring-red-600/10">Overdue</div> -->
                             </dd>
                         </div>
+
                     </dl>
                 </li>
 
-                <li class="overflow-hidden rounded-xl border border-gray-200">
-                    <div class="flex items-center gap-x-4 border-b border-gray-900/5 bg-gray-50 p-6">
-                        <img src="https://tailwindui.com/img/logos/48x48/reform.svg" alt="Reform" class="h-12 w-12 flex-none rounded-lg bg-white object-cover ring-1 ring-gray-900/10" />
-                        <div class="text-xl font-medium leading-6 text-gray-900">
-                            NEXA / BCH
-                        </div>
-                    </div>
-
-                    <dl class="-my-3 divide-y divide-gray-100 px-6 py-4 text-sm leading-6">
-                        <div class="flex justify-between gap-x-4 py-3">
-                            <dt class="text-gray-500">Last invoice</dt>
-                            <dd class="text-gray-700"><time datetime="2023-01-23">January 23, 2023</time></dd>
-                        </div>
-
-                        <div class="flex justify-between gap-x-4 py-3">
-                            <dt class="text-gray-500">Amount</dt>
-                            <dd class="flex items-start gap-x-2">
-                                <div class="font-medium text-gray-900">$7,600.00</div>
-                                <div class="rounded-md py-1 px-2 text-xs font-medium ring-1 ring-inset text-green-700 bg-green-50 ring-green-600/20">Paid</div>
-                            </dd>
-                        </div>
-                    </dl>
-                </li>
             </ul>
 
             <div class="w-full my-20 h-1 bg-gray-500" />
 
             <ul role="list" class="mx-auto mt-32 max-w-7xl px-6 lg:px-8 grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-3 xl:gap-x-8">
+                <h2 class="col-span-3 text-3xl font-bold tracking-widest">
+                    Featured Token Pairs
+                </h2>
 
                 <li v-for="oracle of dataOracles" :key="oracle.id" class="overflow-hidden rounded-xl border border-gray-200">
                     <div class="flex items-center gap-x-4 border-b border-gray-900/5 bg-gray-50 p-6">
@@ -336,56 +365,22 @@ onMounted(() => {
                             </dd>
                         </div>
 
-                    </dl>
-                </li>
-
-                <li class="overflow-hidden rounded-xl border border-gray-200">
-                    <div class="flex items-center gap-x-4 border-b border-gray-900/5 bg-gray-50 p-6">
-                        <img src="https://tailwindui.com/img/logos/48x48/savvycal.svg" alt="SavvyCal" class="h-12 w-12 flex-none rounded-lg bg-white object-cover ring-1 ring-gray-900/10" />
-                        <div class="text-xl font-medium leading-6 text-gray-900">
-                            NEXA / BTC
-                        </div>
-                    </div>
-
-                    <dl class="-my-3 divide-y divide-gray-100 px-6 py-4 text-sm leading-6">
                         <div class="flex justify-between gap-x-4 py-3">
-                            <dt class="text-gray-500">Last invoice</dt>
-                            <dd class="text-gray-700"><time datetime="2023-01-22">January 22, 2023</time></dd>
-                        </div>
+                            <dt class="text-lg text-gray-500">
+                                Last Update
+                            </dt>
 
-                        <div class="flex justify-between gap-x-4 py-3">
-                            <dt class="text-gray-500">Amount</dt>
                             <dd class="flex items-start gap-x-2">
-                                <div class="font-medium text-gray-900">$14,000.00</div>
-                                <div class="rounded-md py-1 px-2 text-xs font-medium ring-1 ring-inset text-green-700 bg-green-50 ring-green-600/20">Paid</div>
+                                <div class="text-lg font-medium text-gray-900">
+                                    {{moment.unix(oracle.updatedAt).fromNow()}}
+                                </div>
+                                <!-- <div class="rounded-md py-1 px-2 text-xs font-medium ring-1 ring-inset text-red-700 bg-red-50 ring-red-600/10">Overdue</div> -->
                             </dd>
                         </div>
+
                     </dl>
                 </li>
 
-                <li class="overflow-hidden rounded-xl border border-gray-200">
-                    <div class="flex items-center gap-x-4 border-b border-gray-900/5 bg-gray-50 p-6">
-                        <img src="https://tailwindui.com/img/logos/48x48/reform.svg" alt="Reform" class="h-12 w-12 flex-none rounded-lg bg-white object-cover ring-1 ring-gray-900/10" />
-                        <div class="text-xl font-medium leading-6 text-gray-900">
-                            NEXA / BCH
-                        </div>
-                    </div>
-
-                    <dl class="-my-3 divide-y divide-gray-100 px-6 py-4 text-sm leading-6">
-                        <div class="flex justify-between gap-x-4 py-3">
-                            <dt class="text-gray-500">Last invoice</dt>
-                            <dd class="text-gray-700"><time datetime="2023-01-23">January 23, 2023</time></dd>
-                        </div>
-
-                        <div class="flex justify-between gap-x-4 py-3">
-                            <dt class="text-gray-500">Amount</dt>
-                            <dd class="flex items-start gap-x-2">
-                                <div class="font-medium text-gray-900">$7,600.00</div>
-                                <div class="rounded-md py-1 px-2 text-xs font-medium ring-1 ring-inset text-green-700 bg-green-50 ring-green-600/20">Paid</div>
-                            </dd>
-                        </div>
-                    </dl>
-                </li>
             </ul>
 
         </main>

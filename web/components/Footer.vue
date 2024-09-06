@@ -1,6 +1,6 @@
 <script setup lang="ts">
-/* Set project details. */
-const { projectid, projectName } = await $fetch('/api/v1/project')
+// /* Set project details. */
+// const { projectid, projectName } = await $fetch('/api/v1/project')
 
 </script>
 
@@ -12,13 +12,13 @@ const { projectid, projectName } = await $fetch('/api/v1/project')
 
         <div class="-mt-5 relative flex justify-center">
             <span class="bg-white px-3 text-gray-500">
-                <img src="~/assets/nexa.svg" class="w-8 h-8" />
+                <img src="~/assets/icon.png" class="w-8 h-8" />
             </span>
         </div>
 
         <section class="mt-5 px-3 flex justify-between">
             <span class="text-sm text-gray-400">
-                &copy; {{new Date().getFullYear()}} {{projectName}} - MIT License
+                &copy; {{new Date().getFullYear()}} Modenero DAO - MIT License
             </span>
 
             <div class="flex flex-row items-center gap-2">
