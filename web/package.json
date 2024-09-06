@@ -1,6 +1,6 @@
 {
   "name": "pythia",
-  "version": "24.7.6",
+  "version": "24.9.5",
   "license": "MIT",
   "scripts": {
     "build": "nuxt build",
@@ -10,14 +10,13 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@pinia/nuxt": "0.4.7",
-    "nexajs": "24.6.24",
-    "nuxt": "3.7.4",
-    "pinia": "2.0.32"
+    "@pinia/nuxt": "0.5.4",
+    "nexajs": "24.8.16",
+    "nuxt": "3.12.4",
+    "pinia": "2.2.2"
   },
   "devDependencies": {
-    "@nuxtjs/i18n": "8.0.0-rc.2",
-    "@nuxtjs/tailwindcss": "6.4.1",
-    "postcss-custom-properties": "13.3.10"
+    "@nuxtjs/i18n": "8.3.3",
+    "@nuxtjs/tailwindcss": "6.12.1"
   }
 }
