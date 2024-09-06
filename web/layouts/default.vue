@@ -46,5 +46,7 @@ watch(System.$state, (_state) => {
 </script>
 
 <template>
+    <Header />
     <slot />
+    <Footer />
 </template>
