@@ -86,6 +86,31 @@ onMounted(() => {
         decimals: 6,
         updatedAt: 1725660362,
     })
+
+    oracles.value.data.push({
+        id: '390e2931-409a-4cfe-aeef-0e6989e1552f',
+        name: 'NXY / USD₮',
+        quote: '0.028000',
+        decimals: 6,
+        updatedAt: 1725660362,
+    })
+
+    oracles.value.data.push({
+        id: 'd7fee110-619d-4919-9f8f-0f96d8ecb5a0',
+        name: 'AGNAR / USD₮',
+        quote: 'n/a',
+        decimals: 0,
+        updatedAt: 1725660362,
+    })
+
+    oracles.value.data.push({
+        id: '87899228-aba3-475d-a9c4-ec8639e99304',
+        name: 'TCTC / USD₮',
+        quote: 'n/a',
+        decimals: 0,
+        updatedAt: 1725660362,
+    })
+
 })
 
 // onBeforeUnmount(() => {
